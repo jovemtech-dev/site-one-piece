@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Piece</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="icon.png">
+  <link href="bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,9 +24,9 @@
 
     <!-- Input de data (somente dia/mês) -->
     <div class="row mb-4 justify-content-center">
-      <div class="col-md-2">
-        <select id="dia" class="form-control">
-          <option value="">Escolha o dia</option>
+      <div class="col-2">
+        <select id="dia" class="form-control text-center">
+          <option id="choseDay"value="">Chose a day</option>
           <option value="01">1</option>
           <option value="02">2</option>
           <option value="03">3</option>
@@ -59,21 +60,21 @@
           <option value="31">31</option>
         </select>
       </div>
-      <div class="col-md-2">
-        <select id="mes" class="form-control">
-          <option value="">Escolha o mês</option>
-          <option value="01">Janeiro</option>
-          <option value="02">Fevereiro</option>
-          <option value="03">Março</option>
-          <option value="04">Abril</option>
-          <option value="05">Maio</option>
-          <option value="06">Junho</option>
-          <option value="07">Julho</option>
-          <option value="08">Agosto</option>
-          <option value="09">Setembro</option>
-          <option value="10">Outubro</option>
-          <option value="11">Novembro</option>
-          <option value="12">Dezembro</option>
+      <div class="col-2">
+        <select id="mes" class="form-control text-center">
+          <option id="choseMonth" value="">Chose a month</option>
+          <option id="jan" value="01">January</option>
+          <option id="feb" value="02">February</option>
+          <option id="mar" value="03">March</option>
+          <option id="api" value="04">April</option>
+          <option id="may" value="05">May</option>
+          <option id="jun" value="06">June</option>
+          <option id="jul" value="07">July</option>
+          <option id="aug" value="08">August</option>
+          <option id="sep" value="09">September</option>
+          <option id="oct" value="10">October</option>
+          <option id="nov" value="11">November</option>
+          <option id="dez" value="12">December</option>
         </select>
       </div>
 
@@ -82,7 +83,7 @@
       </div> -->
 
       <div class="col-md-2">
-        <button id="searchBtn" class="btn btn-primary w-100" id="searchBtn">Search</button>
+        <button id="searchBtn" class="btn btn-primary w-100">Search</button>
       </div>
     </div>
 
@@ -90,9 +91,8 @@
     <div id="results" class="row g-3"></div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
-
 
 </html>
