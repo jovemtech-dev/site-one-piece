@@ -95,36 +95,49 @@ function displayResults(episodes) {
     resultsDiv.appendChild(contEp);
 
     // Cards dos episódios
-    episodes.forEach(ep => {
-        const card = document.createElement('div');
-        card.className = "col-12 mb-3";
+episodes.forEach(ep => {
+    const card = document.createElement('div');
+    card.className = "col-12 mb-3";
 
-        const title = currentLang === 'en' ? ep.episode_name_en : ep.episode_name_pt;
-        const summary = currentLang === 'en' ? ep.episode_summary_en : ep.episode_summary_pt;
-        const saga = currentLang === 'en' ? ep.saga_en : ep.saga_pt;
-        const arc = currentLang === 'en' ? ep.arc_en : ep.arc_pt;
-        const year = ep.air_date.split("-")[0];
+    const title = currentLang === 'en' ? ep.episode_name_en : ep.episode_name_pt;
+    const summary = currentLang === 'en' ? ep.episode_summary_en : ep.episode_summary_pt;
+    const saga = currentLang === 'en' ? ep.saga_en : ep.saga_pt;
+    const arc = currentLang === 'en' ? ep.arc_en : ep.arc_pt;
+    const year = ep.air_date.split("-")[0];
 
-        const isFiller = ep.Filler && ep.Filler.toString().toLowerCase() === "true"; 
-        const fillerBadge = isFiller ? `<span class="filler-badge bg-primary ms-2">
-        ${currentLang === 'en' ? 'Filler Episode':'Episódio Filler'}</span>` : "";
+    const isFiller = ep.Filler && ep.Filler.toString().toLowerCase() === "true"; 
+    const fillerBadge = isFiller
+        ? `<span class="filler-badge bg-primary ms-2">
+            ${currentLang === 'en' ? 'Filler Episode' : 'Episódio Filler'}
+           </span>`
+        : "";
 
-        card.innerHTML = `
-        <a href="${ep.episode_post_href}" target="_blank" class="text-decoration-none">
-            <div class="card shadow-sm p-3 d-flex flex-row align-items-start">
-                <img src="${ep.episode_image}" alt="${title}" class="rounded me-3" 
-                style="width: 200px; height: 150px; object-fit: cover;">
-                    <div>
-                    <h5 class="card-title mb-1">Episode ${ep.episode} - ${title}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">${ep.episode_name_jp}</h6>
-                    <p class="card-text mb-2">${summary}</p>
-                    <small class="text-secondary">${year} — Saga ${saga} — ${currentLang === 'en' ? 'Arc':'Arco'} ${arc} ${fillerBadge}</small>
-                </div>
+    // Botão para assistir o episódio (se existir o link)
+    const watchButton = ep.watch_episode_url
+        ? `<a href="${ep.watch_episode_url}" target="_blank"
+              class="btn btn-warning btn-sm mt-2 fw-bold">
+              🍿 ${currentLang === 'en' ? 'Watch Episode' : 'Assistir Episódio'}
+           </a>`
+        : "";
+
+    card.innerHTML = `
+        <div class="card shadow-sm p-3 d-flex flex-row align-items-start">
+            <img src="${ep.episode_image}" alt="${title}" class="rounded me-3"
+                 style="width: 200px; height: 150px; object-fit: cover;">
+            <div>
+                <h5 class="card-title mb-1">Episode ${ep.episode} - ${title}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">${ep.episode_name_jp}</h6>
+                <p class="card-text mb-2">${summary}</p>
+                ${watchButton}
+                <br>
+                <small class="text-secondary">
+                    ${year} — Saga ${saga} — ${currentLang === 'en' ? 'Arc' : 'Arco'} ${arc}
+                    ${fillerBadge}
+                </small>
             </div>
-        </a>
-        `;
+        </div>
+    `;
 
-
-        resultsDiv.appendChild(card);
-    });
+    resultsDiv.appendChild(card);
+});
 }
