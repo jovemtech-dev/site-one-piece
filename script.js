@@ -94,8 +94,8 @@ function displayResults(episodes) {
     `;
     resultsDiv.appendChild(contEp);
 
-    // Cards dos episódios
-episodes.forEach(ep => {
+   // Cards dos episódios
+    episodes.forEach(ep => {
     const card = document.createElement('div');
     card.className = "col-12 mb-3";
 
@@ -112,25 +112,38 @@ episodes.forEach(ep => {
            </span>`
         : "";
 
-    // Botão para assistir o episódio (se existir o link)
+    // Botão Crunchyroll
     const watchButton = ep.watch_episode_url
         ? `<a href="${ep.watch_episode_url}" target="_blank"
-              class="btn btn-warning btn-sm mt-2 fw-bold">
-              🍿 ${currentLang === 'en' ? 'Watch Episode' : 'Assistir Episódio'}
+              class="btn btn-warning btn-sm me-2 mb-1 fw-bold">
+              🍿 ${currentLang === 'en' ? 'Watch Episode on Crunchyroll' : 'Assistir Episódio na Crunchyroll'}
+           </a>`
+        : "";
+
+    // Botão Fandom
+    const fandomButton = ep.episode_post_href
+        ? `<a href="${ep.episode_post_href}" target="_blank"
+              class="btn btn-info btn-sm mb-1 fw-bold">
+              📖 ${currentLang === 'en' ? 'Fandom' : 'Fandom'}
            </a>`
         : "";
 
     card.innerHTML = `
-        <div class="card shadow-sm p-3 d-flex flex-row align-items-start">
-            <img src="${ep.episode_image}" alt="${title}" class="rounded me-3"
+        <div class="card shadow-sm p-3 d-flex flex-row align-items-start flex-wrap">
+            <img src="${ep.episode_image}" alt="${title}" class="rounded me-3 mb-2"
                  style="width: 200px; height: 150px; object-fit: cover;">
-            <div>
+            <div class="flex-grow-1">
                 <h5 class="card-title mb-1">Episode ${ep.episode} - ${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${ep.episode_name_jp}</h6>
                 <p class="card-text mb-2">${summary}</p>
-                ${watchButton}
-                <br>
-                <small class="text-secondary">
+
+                <!-- Botões -->
+                <div class="d-flex flex-wrap">
+                    ${watchButton}
+                    ${fandomButton}
+                </div>
+
+                <small class="text-secondary mt-2 d-block">
                     ${year} — Saga ${saga} — ${currentLang === 'en' ? 'Arc' : 'Arco'} ${arc}
                     ${fillerBadge}
                 </small>
