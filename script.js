@@ -129,26 +129,25 @@ function displayResults(episodes) {
         : "";
 
     card.innerHTML = `
-        <div class="card shadow-sm p-3 d-flex flex-row align-items-start flex-wrap">
-            <img src="${ep.episode_image}" alt="${title}" class="rounded me-3 mb-2"
-                 style="width: 200px; height: 150px; object-fit: cover;">
-            <div class="flex-grow-1">
-                <h5 class="card-title mb-1">Episode ${ep.episode} - ${title}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">${ep.episode_name_jp}</h6>
-                <p class="card-text mb-2">${summary}</p>
+    <div class="card shadow-sm p-3 d-flex flex-row align-items-start">
+        <img src="${ep.episode_image}" alt="${title}" class="rounded me-3 flex-shrink-0"
+            style="width: 200px; height: 150px; object-fit: cover;">
+        <div class="flex-grow-1">
+            <h5 class="card-title mb-1" style="word-break: break-word;">Episode ${ep.episode} - ${title}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">${ep.episode_name_jp}</h6>
+            <p class="card-text mb-2">${summary}</p>
 
-                <!-- Botões -->
-                <div class="d-flex flex-wrap">
-                    ${watchButton}
-                    ${fandomButton}
-                </div>
-
-                <small class="text-secondary mt-2 d-block">
-                    ${year} — Saga ${saga} — ${currentLang === 'en' ? 'Arc' : 'Arco'} ${arc}
-                    ${fillerBadge}
-                </small>
+            <div class="d-flex flex-wrap">
+                ${watchButton}
+                ${fandomButton}
             </div>
+
+            <small class="text-secondary mt-2 d-block">
+                ${year} — Saga ${saga} — ${currentLang === 'en' ? 'Arc' : 'Arco'} ${arc}
+                ${fillerBadge}
+            </small>
         </div>
+    </div>
     `;
 
     resultsDiv.appendChild(card);
