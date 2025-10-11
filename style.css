@@ -1,45 +1,148 @@
+/* Reset básico */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body {
-  background-image:linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url(Luffy-Wallpaper.jpg);
-  background-size: cover;
-  background-repeat: repeat-y;
-  background-attachment: fixed;
+
+/* Altura total do body e flex para footer fixo no final */
+html, body {
+    height: 100%;
 }
 
+body {
+    background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url(Luffy-Wallpaper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Conteúdo principal ocupa espaço restante */
+main {
+    flex: 1;
+    padding: 1rem;
+}
+
+/* Cards de episódios */
 #results .card {
-  transition: transform 0.2s;
-  margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* permite quebrar linha */
+    transition: transform 0.2s;
+    margin-bottom: 1rem;
+    position: relative;
 }
 
 #results .card:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+#search-controls {
+    display: flex;
+     /* espaço horizontal entre os elementos */
+    flex-wrap: wrap; /* permite quebrar linha se necessário */
+}
+
+.card img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 1rem;
+    flex-shrink: 0; /* não encolhe */
 }
 
 .card-title {
-  font-weight: bold;
+    font-weight: bold;
+    word-break: break-word; /* títulos grandes quebram linha */
 }
 
 .card-subtitle {
-  font-style: italic;
-  color: #555;
+    font-style: italic;
+    color: #555;
 }
 
 .bg-light-blue {
-  background-color: #dbeafe !important; 
+    background-color: #dbeafe !important; 
 }
 
 .filler-badge {
-  position: absolute;
-  right: 8px;
-  background-color: #3b82f6; /* azul intenso */
-  color: white;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    position: absolute;
+    right: 8px;
+    background-color: #3b82f6; /* azul intenso */
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Selects (dia e mês) */
+select.form-control {
+    width: 100%;
+    max-width: 150px; /* desktop mantém tamanho */
+    margin-right: 0.5rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* ==================== MOBILE ==================== */
+@media (max-width: 768px) {
+    body {
+        background-size: auto 100%; /* fundo não corta */
+        background-position: center top;
+    }
+
+    /* Selects ocupam toda largura e empilham */
+    #selectors {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    select.form-control {
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    #search-controls {
+      flex-direction: column; /* empilha verticalmente */
+      gap: 0.5rem; /* espaço entre cada elemento */
+    }
+
+    #search-controls select.form-control,
+    #search-controls button {
+      width: 100%; /* cada elemento ocupa toda a largura */
+    }
+
+    /* Cards: imagem em cima e texto abaixo */
+    #results .card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card img {
+        width: 100% !important;
+        height: auto !important;
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .card .flex-grow-1 {
+        width: 100%;
+    }
+
+    .card .d-flex.flex-wrap {
+        justify-content: flex-start;
+    }
 }
