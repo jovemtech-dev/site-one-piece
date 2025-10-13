@@ -31,7 +31,7 @@ main {
 #results .card {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; /* permite quebrar linha */
+    flex-wrap: nowrap; /* permite quebrar linha */
     transition: transform 0.2s;
     margin-bottom: 1rem;
     position: relative;
@@ -145,4 +145,5 @@ footer {
     .card .d-flex.flex-wrap {
         justify-content: flex-start;
     }
+
 }
