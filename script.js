@@ -129,7 +129,7 @@ function displayResults(episodes) {
         : "";
 
     card.innerHTML = `
-    <div class="card shadow-sm p-3 d-flex flex-row align-items-start">
+    <div class="card shadow-sm p-3 d-flex flex-row flex-wrap align-items-start">
         <img src="${ep.episode_image}" alt="${title}" class="img-fluid rounded-start me-3 flex-shrink-0"
             style="width: 200px; height: 150px; object-fit: cover;">
         <div class="flex-grow-1">
@@ -153,4 +153,5 @@ function displayResults(episodes) {
     resultsDiv.appendChild(card);
 });
 }
+
 
