@@ -84,7 +84,6 @@ main {
 
 /* Selects (dia e mês) */
 select.form-control {
-    width: 100%;
     margin-right: 0.5rem;
 }
 
@@ -148,5 +147,6 @@ footer {
     }
 
 }
+
 
 
