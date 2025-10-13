@@ -43,9 +43,7 @@ main {
 }
 
 #search-controls {
-    display: flex;
-     /* espaço horizontal entre os elementos */
-    flex-wrap: nowrap; /* permite quebrar linha se necessário */
+    flex-wrap: nowrap;
 }
 
 .card img {
@@ -147,6 +145,7 @@ footer {
     }
 
 }
+
 
 
 
