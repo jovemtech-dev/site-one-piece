@@ -32,6 +32,7 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap; /* permite quebrar linha */
+    align-items: flex-start;
     transition: transform 0.2s;
     margin-bottom: 1rem;
     position: relative;
@@ -84,7 +85,6 @@ main {
 /* Selects (dia e mês) */
 select.form-control {
     width: 100%;
-    max-width: 150px; /* desktop mantém tamanho */
     margin-right: 0.5rem;
 }
 
@@ -128,6 +128,7 @@ footer {
     /* Cards: imagem em cima e texto abaixo */
     #results .card {
         flex-direction: column;
+        flex-wrap: wrap;
         align-items: flex-start;
     }
 
@@ -147,4 +148,5 @@ footer {
     }
 
 }
+
 
