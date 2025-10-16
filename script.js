@@ -16,7 +16,7 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
             currentLang === 'en'
                 ? "One Piece Episodes on Your Birthday"
                 : "Episódios de One Piece no seu aniversário";
-        document.getElementById('subtitle').textContent =
+        document.getElementById('sub_title').textContent =
             currentLang === 'en'
                 ? "Find out what episodes of One Piece aired in the day of your birthday."
                 : "Descubra quais episódios de One Piece foram ao ar no dia do seu aniversário";
@@ -158,6 +158,7 @@ function displayResults(episodes) {
     resultsDiv.appendChild(card);
 });
 }
+
 
 
 
